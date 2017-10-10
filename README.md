@@ -1,12 +1,26 @@
 # Projet 5 OpenClassrooms - Créez votre premier blog en PHP 
-# Parcours Développeur d'application - PHP / Symfony
+## Parcours Développeur d'application - PHP / Symfony
 
-I have reused the theme Clean Blog made by the website startbootstrap.com
+J'ai utilisé le thème Clean Blog disponible sur le site startbootstrap.com pour réaliser la partie front de ce blog
+Si vous voulez voir le code sur GitHub, cliquez sur le lien : [https://www.github.com/Maxxxiimus92/p5_blog](https://www.github.com/Maxxxiimus92/p5_blog)
 
-If you want to see the code on github, go here : https://www.github.com/Maxxxiimus92/p5_blog
+I used the theme Clean Blog made by the website startbootstrap.com
+If you want to see the code on GitHub, go here : [https://www.github.com/Maxxxiimus92/p5_blog](https://www.github.com/Maxxxiimus92/p5_blog)
+
+## Installation
+
+Pour utiliser ce blog, il faut suivre les étapes suivantes :
+* Créer une base de données et importer le fichier projet_blog.sql situé dans le dossier db
+* Entrez vos identifiants de connexion à la base de données dans le fichier database.php situé dans le dossier php
+* Amusez-vous !
+
+To use this blog, you must follow this steps :
+* Create a database and import the projet_blog.sql file located in the db folder
+* Enter your connexion settings in the file database.php located in the php folder
+* Enjoy !
 
 
-# README original
+# README original of the Clean Blog Theme
 
 # [Start Bootstrap - Clean Blog](https://startbootstrap.com/template-overviews/clean-blog/)
 
