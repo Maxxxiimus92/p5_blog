@@ -2,6 +2,11 @@
 
     require 'database.php';
 
+	if(!empty($_GET['id']))
+    {
+        $id = checkInput($_GET['id']);
+    }
+
     $authorError = $titleError = $chapoError = $contentError = $author = $title = $chapo = $content = "";
 
     if(!empty($_POST))
@@ -36,12 +41,24 @@
         if($isSuccess)
         {
             $db = Database::connect();
-            $statement = $db->prepare("INSERT INTO article (author, title, chapo, content, created_at, updated_at) values (?, ?, ?, ?, NOW(), NOW())");
-            $statement->execute(array($author, $title, $chapo, $content));
+            $statement = $db->prepare("UPDATE article set author = ?, title = ?, chapo= ?, content = ?, updated_at = NOW() WHERE id = ?");
+            $statement->execute(array($author, $title, $chapo, $content, $id));
             Database::disconnect();
             header("Location: list.php");
         }
 
+    }
+	else
+    {
+        $db = Database::connect();
+        $statement = $db->prepare("SELECT * FROM article WHERE id = ?");
+        $statement->execute(array($id));
+        $article = $statement->fetch();
+        $author = $article['author'];
+        $title = $article['title'];
+        $chapo = $article['chapo'];
+        $content = $article['content'];
+        Database::disconnect();
     }
 
     function checkInput($data)
@@ -60,10 +77,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
+	<meta name="description" content="Projet Blog pour OpenClassrooms - Parcours développeur d'application - PHP / Symfony">
 	<meta name="author" content="">
 
-	<title>Projet Blog</title>
+	<title>Projet Blog - Modifier</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -108,8 +125,8 @@
 			<div class="row">
 				<div class="col-lg-10 col-md-10 mx-auto">
 					<div class="site-heading">
-						<h1>Ajouter un Article</h1>
-						<span class="subheading">Veuillez remplir les champs ci-dessous</span>
+						<h1>Modifier un Article</h1>
+						<span class="subheading">Vous pouvez modifier les champs ci-dessous</span>
 						<br>
 					</div>
 				</div>
@@ -117,11 +134,11 @@
 		</div>
     </header>
 
-    <!-- Insert Page -->
+    <!-- Update Page -->
 	<div class="container">
-        <div class="row">
+		<div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <form class="form" role="form" action="#" method="post">
+                <form class="form" role="form" action="" method="post">
                     <div class="form-group">
                         <label for="author">Auteur :</label>
                         <input type="text" class="form-control" id="author" name="author" placeholder="Auteur" value="<?php echo $author; ?>">
@@ -144,8 +161,8 @@
                     </div>
                     <br>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-success">Ajouter</button>
-                        <a class="btn btn-primary" href="../index.html">Retour</a>
+                        <button type="submit" class="btn btn-success">Modifier</button>
+                        <a class="btn btn-primary" href="list.php">Retour</a>
                     </div>
                 </form>
             </div>

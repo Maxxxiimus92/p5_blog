@@ -1,13 +1,49 @@
+<?php
+
+    require 'database.php';
+
+	if(!empty($_GET['id']))
+    {
+        $id = checkInput($_GET['id']);
+    }
+
+    $db = Database::connect();
+    $statement = $db->prepare('SELECT id, title, author, chapo, article.content, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article WHERE id = ?');
+
+    $statement->execute(array($id));
+    $article = $statement->fetch();
+    Database::disconnect();
+
+    if(!empty($_POST))
+    {
+		$id = checkInput($_POST['id']);
+		$db = Database::connect();
+		$statement = $db->prepare("DELETE FROM article WHERE id = ?");
+		$statement->execute(array($id));
+		Database::disconnect();
+		header("Location: list.php");
+    }
+
+    function checkInput($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
+	<meta name="description" content="Projet Blog pour OpenClassrooms - Parcours développeur d'application - PHP / Symfony">
 	<meta name="author" content="">
 
-	<title>Projet Blog</title>
+	<title>Projet Blog - Supprimer</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,45 +82,43 @@
 		</div>
     </nav>
 
-    <!-- Page Header -->
+    <!-- Page Header and Delete Confirmation -->
     <header class="masthead" style="background-image: url('../img/computer.jpg')">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="col-lg-10 col-md-10 mx-auto">
 					<div class="site-heading">
-						<h1>Liste des Articles</h1>
-						<span class="subheading">Cliquez sur un titre pour voir son contenu et/ou le modifier</span>
+						<h1><?php echo $article['title'] ?></h1>
 						<br>
-						<a href="insert.php" class="btn btn-secondary">Ajouter un article</a>
+						<span class="subheading">Voulez-vous vraiment supprimer cet article ?</span>
+						<br>
+						<form class="form" role="form" action="delete.php" method="post">
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-danger">Oui</button>
+                                <a class="btn btn-primary" href="view.php?id=<?php echo $id; ?>">Non</a>
+                            </div>
+				        </form>
 					</div>
 				</div>
 			</div>
 		</div>
     </header>
 
-    <!-- Articles list -->
+    <!-- View Article -->
 	<div class="container">
-		<?php
-		require "database.php";
-		$db = Database::connect();
-		$statement = $db->query('SELECT id, title, chapo, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article ORDER BY updated DESC, id DESC');
-
-		while($article = $statement->fetch())
-		{
-			echo "<div class='row'>";
-            echo "<div class='col-lg-12 col-md-10 mx-auto'>";
-			echo "<a href='view.php?id=" . $article["id"] . "'><h2>" . $article["title"] . "</h2></a>";
-			echo "<p>" . $article["chapo"] . "</p>";
-			echo "<p>Créé le " . $article["created"] . ". Modifié le " . $article["updated"] . "</p>";
-			echo "</div>";
-            echo "</div>";
-            echo "<hr>";
-		}
-
-		Database::disconnect();
-
-		?>
+		<div class="row">
+			<div class="col-lg-12 col-md-10 mx-auto">
+				<p>Ecrit par <?php echo $article['author']; ?>, le <?php echo $article['created']; ?>. Modifié le <?php echo $article['updated']; ?></p>
+				<p><strong><?php echo nl2br($article['chapo']); ?></strong></p>
+				<p><?php echo nl2br($article['content']); ?></p>
+				<?php echo "<a class='btn btn-primary' href='edit.php?id=" . $article["id"] . "'>Modifier</a>"; ?>
+				<?php echo "<a class='btn btn-danger' href='delete.php?id=" . $article["id"] . "'>Supprimer</a>"; ?>
+			</div>
+		</div>
 	</div>
+
+    <hr>
 
     <!-- Footer -->
     <footer>
