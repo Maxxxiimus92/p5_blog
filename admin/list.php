@@ -39,7 +39,7 @@
 						<a class="nav-link" href="list.php">Articles</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="insert.php">Ajouter</a>
+						<a class="nav-link" href="add.php">Ajouter</a>
 					</li>
 				</ul>
 			</div>
@@ -50,12 +50,12 @@
     <header class="masthead" style="background-image: url('../img/computer.jpg')">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="col-lg-10 col-md-10 mx-auto">
 					<div class="site-heading">
 						<h1>Liste des Articles</h1>
 						<span class="subheading">Cliquez sur un titre pour voir son contenu et/ou le modifier</span>
 						<br>
-						<a href="insert.php" class="btn btn-secondary">Ajouter un article</a>
+						<a href="add.php" class="btn btn-secondary">Ajouter un article</a>
 					</div>
 				</div>
 			</div>
@@ -72,7 +72,7 @@
 		while($article = $statement->fetch())
 		{
 			echo "<div class='row'>";
-            echo "<div class='col-lg-12 col-md-10 mx-auto'>";
+            echo "<div class='col-lg-10 col-md-10 mx-auto'>";
 			echo "<a href='view.php?id=" . $article["id"] . "'><h2>" . $article["title"] . "</h2></a>";
 			echo "<p>" . nl2br($article["chapo"]) . "</p>";
 			echo "<p>Créé le " . $article["created"] . ". Modifié le " . $article["updated"] . "</p>";
@@ -90,7 +90,7 @@
     <footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="col-lg-10 col-md-10 mx-auto">
 					<ul class="list-inline text-center">
 						<li class="list-inline-item">
 							<a href="https://www.twitter.com/Maxxximus92" target="_blank">

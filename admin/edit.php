@@ -112,7 +112,7 @@
 						<a class="nav-link" href="list.php">Articles</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="insert.php">Ajouter</a>
+						<a class="nav-link" href="add.php">Ajouter</a>
 					</li>
 				</ul>
 			</div>
@@ -137,7 +137,7 @@
     <!-- Update Page -->
 	<div class="container">
 		<div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="col-lg-10 col-md-10 mx-auto">
                 <form class="form" role="form" action="" method="post">
                     <div class="form-group">
                         <label for="author">Auteur :</label>
@@ -175,7 +175,7 @@
     <footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="col-lg-10 col-md-10 mx-auto">
 					<ul class="list-inline text-center">
 						<li class="list-inline-item">
 							<a href="https://www.twitter.com/Maxxximus92" target="_blank">

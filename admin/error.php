@@ -1,37 +1,3 @@
-<?php
-    require 'database.php';
-
-    if(!empty($_GET['id']))
-    {
-        $id = checkInput($_GET['id']);
-    }
-
-    $db = Database::connect();
-    $statement = $db->prepare('SELECT id, title, author, chapo, article.content, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article WHERE id = ?');
-
-    $statement->execute(array($id));
-
-	if($statement->rowCount() == 1)
-	{
-		$article = $statement->fetch();
-	}
-	else
-	{
-		header("Location: error.php");
-	}
-
-    Database::disconnect();
-
-    function checkInput($data)
-    {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -41,7 +7,7 @@
 	<meta name="description" content="Projet Blog pour OpenClassrooms - Parcours développeur d'application - PHP / Symfony">
 	<meta name="author" content="">
 
-	<title>Projet Blog - Détail Article</title>
+	<title>Projet Blog - Erreur</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -59,7 +25,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container">
-		<a class="navbar-brand" href="../index.html">Projet Blog</a>
+		<a class="navbar-brand" href="../index.php">Projet Blog</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		  Menu
 			<i class="fa fa-bars"></i>
@@ -67,7 +33,7 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="../index.html">Accueil</a>
+						<a class="nav-link" href="../index.php">Accueil</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="list.php">Articles</a>
@@ -80,35 +46,32 @@
 		</div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="masthead" style="background-image: url('../img/computer.jpg')">
+	<!-- Page Header -->
+	<header class="masthead" style="background-image: url('../img/computer.jpg')">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-md-10 mx-auto">
 					<div class="site-heading">
-						<h1><?php echo $article['title'] ?></h1>
-						<br>
+						<h1>Erreur 404</h1>
 					</div>
 				</div>
 			</div>
 		</div>
-    </header>
+	</header>
 
-    <!-- View Article -->
-	<div class="container">
+    <!-- Error Page -->
+    <div class="container">
 		<div class="row">
 			<div class="col-lg-10 col-md-10 mx-auto">
-				<p>Ecrit par <?php echo $article['author']; ?>, le <?php echo $article['created']; ?>. Modifié le <?php echo $article['updated']; ?></p>
-				<p><strong><?php echo nl2br($article['chapo']); ?></strong></p>
-				<p><?php echo nl2br($article['content']); ?></p>
-				<?php echo "<a class='btn btn-success' href='edit.php?id=" . $article["id"] . "'>Modifier</a>"; ?>
-				<?php echo "<a class='btn btn-danger' href='delete.php?id=" . $article["id"] . "'>Supprimer</a>"; ?>
+				<h4>L'article demandé n'existe pas ou a été supprimé !</h4>
+				<br>
 				<a class="btn btn-primary" href="list.php">Retour</a>
 			</div>
 		</div>
 	</div>
 
-    <hr>
+
+	<hr>
 
     <!-- Footer -->
     <footer>
