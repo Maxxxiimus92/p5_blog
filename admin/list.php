@@ -75,7 +75,7 @@
             echo "<div class='col-lg-10 col-md-10 mx-auto'>";
 			echo "<a href='view.php?id=" . $article["id"] . "'><h2>" . $article["title"] . "</h2></a>";
 			echo "<p>" . nl2br($article["chapo"]) . "</p>";
-			echo "<p>Créé le " . $article["created"] . ". Modifié le " . $article["updated"] . "</p>";
+			echo "<p><em>Créé le " . $article["created"] . ". Modifié le " . $article["updated"] . ".</em></p>";
 			echo "</div>";
             echo "</div>";
             echo "<hr>";

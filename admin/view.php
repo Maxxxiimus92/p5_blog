@@ -98,7 +98,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-10 col-md-10 mx-auto">
-				<p>Ecrit par <?php echo $article['author']; ?>, le <?php echo $article['created']; ?>. Modifié le <?php echo $article['updated']; ?></p>
+                <p><em>Ecrit par <?php echo $article['author']; ?>, le <?php echo $article['created']; ?>. Modifié le <?php echo $article['updated']; ?>.</em></p>
 				<p><strong><?php echo nl2br($article['chapo']); ?></strong></p>
 				<p><?php echo nl2br($article['content']); ?></p>
 				<?php echo "<a class='btn btn-success' href='edit.php?id=" . $article["id"] . "'>Modifier</a>"; ?>
