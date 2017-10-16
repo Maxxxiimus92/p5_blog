@@ -8,7 +8,7 @@
     }
 
     $db = Database::connect();
-    $statement = $db->prepare('SELECT id, title, author, chapo, article.content, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article WHERE id = ?');
+    $statement = $db->prepare('SELECT id, title, author, chapo, content, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article WHERE id = ?');
 
     $statement->execute(array($id));
     $article = $statement->fetch();
@@ -88,15 +88,15 @@
 			<div class="row">
 				<div class="col-lg-10 col-md-10 mx-auto">
 					<div class="site-heading">
-						<h1><?php echo $article['title'] ?></h1>
+						<h1><?= $article['title'] ?></h1>
 						<br>
 						<span class="subheading">Voulez-vous vraiment supprimer cet article ?</span>
 						<br>
 						<form class="form" role="form" action="delete.php" method="post">
-                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <input type="hidden" name="id" value="<?= $id; ?>">
                             <div class="form-actions">
                                 <button type="submit" class="btn btn-danger">Oui</button>
-                                <a class="btn btn-primary" href="view.php?id=<?php echo $id; ?>">Non</a>
+                                <a class="btn btn-primary" href="view.php?id=<?= $id; ?>">Non</a>
                             </div>
 				        </form>
 					</div>
@@ -109,11 +109,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-10 col-md-10 mx-auto">
-				<p>Ecrit par <?php echo $article['author']; ?>, le <?php echo $article['created']; ?>. Modifié le <?php echo $article['updated']; ?></p>
-				<p><strong><?php echo nl2br($article['chapo']); ?></strong></p>
-				<p><?php echo nl2br($article['content']); ?></p>
-				<?php echo "<a class='btn btn-primary' href='edit.php?id=" . $article["id"] . "'>Modifier</a>"; ?>
-				<?php echo "<a class='btn btn-danger' href='delete.php?id=" . $article["id"] . "'>Supprimer</a>"; ?>
+				<p><em>Ecrit par <?= $article['author']; ?>, le <?= $article['created']; ?>. Modifié le <?= $article['updated']; ?></em></p>
+				<p><strong><?= nl2br($article['chapo']); ?></strong></p>
+				<p><?= nl2br($article['content']); ?></p>
 			</div>
 		</div>
 	</div>

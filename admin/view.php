@@ -7,7 +7,7 @@
     }
 
     $db = Database::connect();
-    $statement = $db->prepare('SELECT id, title, author, chapo, article.content, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article WHERE id = ?');
+    $statement = $db->prepare('SELECT id, title, author, chapo, content, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article WHERE id = ?');
 
     $statement->execute(array($id));
 
@@ -86,7 +86,7 @@
 			<div class="row">
 				<div class="col-lg-10 col-md-10 mx-auto">
 					<div class="site-heading">
-						<h1><?php echo $article['title'] ?></h1>
+						<h1><?= $article['title'] ?></h1>
 						<br>
 					</div>
 				</div>
@@ -98,11 +98,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-10 col-md-10 mx-auto">
-                <p><em>Ecrit par <?php echo $article['author']; ?>, le <?php echo $article['created']; ?>. Modifié le <?php echo $article['updated']; ?>.</em></p>
-				<p><strong><?php echo nl2br($article['chapo']); ?></strong></p>
-				<p><?php echo nl2br($article['content']); ?></p>
-				<?php echo "<a class='btn btn-success' href='edit.php?id=" . $article["id"] . "'>Modifier</a>"; ?>
-				<?php echo "<a class='btn btn-danger' href='delete.php?id=" . $article["id"] . "'>Supprimer</a>"; ?>
+                <p><em>Ecrit par <?= $article['author']; ?>, le <?= $article['created']; ?>. Modifié le <?p= $article['updated']; ?>.</em></p>
+				<p><strong><?= nl2br($article['chapo']); ?></strong></p>
+				<p><?= nl2br($article['content']); ?></p>
+				<?= "<a class='btn btn-success' href='edit.php?id=" . $article["id"] . "'>Modifier</a>"; ?>
+				<?= "<a class='btn btn-danger' href='delete.php?id=" . $article["id"] . "'>Supprimer</a>"; ?>
 				<a class="btn btn-primary" href="list.php">Retour</a>
 			</div>
 		</div>

@@ -141,23 +141,23 @@
                 <form class="form" role="form" action="" method="post">
                     <div class="form-group">
                         <label for="author">Auteur :</label>
-                        <input type="text" class="form-control" id="author" name="author" placeholder="Auteur" value="<?php echo $author; ?>">
-                        <span class="help-inline"><?php echo $authorError; ?></span>
+                        <input type="text" class="form-control" id="author" name="author" placeholder="Auteur" value="<?= $author; ?>">
+                        <span class="help-inline"><?= $authorError; ?></span>
                     </div>
                     <div class="form-group">
                         <label for="title">Titre :</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Titre" value="<?php echo $title; ?>">
-                        <span class="help-inline"><?php echo $titleError; ?></span>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Titre" value="<?= $title; ?>">
+                        <span class="help-inline"><?= $titleError; ?></span>
                     </div>
                     <div class="form-group">
                         <label for="chapo">Chapô :</label>
-                        <textarea type="text" class="form-control" id="chapo" name="chapo" placeholder="Chapô de l'article" rows="8"><?php echo $chapo; ?></textarea>
-                        <span class="help-inline"><?php echo $chapoError; ?></span>
+                        <textarea type="text" class="form-control" id="chapo" name="chapo" placeholder="Chapô de l'article" rows="8"><?= $chapo; ?></textarea>
+                        <span class="help-inline"><?= $chapoError; ?></span>
                     </div>
                     <div class="form-group">
                         <label for="content">Contenu :</label>
-                        <textarea type="text" class="form-control" id="content" name="content" placeholder="Contenu de l'article" rows="25"><?php echo $content; ?></textarea>
-                        <span class="help-inline"><?php echo $contentError; ?></span>
+                        <textarea type="text" class="form-control" id="content" name="content" placeholder="Contenu de l'article" rows="25"><?= $content; ?></textarea>
+                        <span class="help-inline"><?= $contentError; ?></span>
                     </div>
                     <br>
                     <div class="form-actions">
