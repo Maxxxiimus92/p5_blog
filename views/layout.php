@@ -7,7 +7,7 @@
 	<meta name="description" content="Projet Blog pour OpenClassrooms - Parcours développeur d'application - PHP / Symfony">
 	<meta name="author" content="">
 
-	<title>Projet Blog</title>
+	<title><?= $title ?></title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container">
-		<a class="navbar-brand" href="index.html">Projet Blog</a>
+		<a class="navbar-brand" href="index.php">Projet Blog</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		  Menu
 			<i class="fa fa-bars"></i>
@@ -33,13 +33,13 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="index.html">Accueil</a>
+						<a class="nav-link" href="index.php">Accueil</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="admin/list.php">Articles</a>
+						<a class="nav-link" href="index.php?p=list">Articles</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="admin/add.php">Ajouter</a>
+						<a class="nav-link" href="index.php?p=add">Ajouter</a>
 					</li>
 				</ul>
 			</div>
@@ -47,62 +47,27 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/computer.jpg')">
+	<header class="masthead" style="background-image: url('img/computer.jpg')">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-md-10 mx-auto">
 					<div class="site-heading">
-						<h1>Ulrich Huet</h1>
-						<span class="subheading">Développeur web en formation</span>
+						<?= $header ?>
+						<?= $subheader ?>
 						<br>
-						<a href="docs/CV_HUET_portolio.pdf" class="btn btn-secondary" target="_blank">Télécharger CV</a>
+						<?= $button ?>
 					</div>
 				</div>
 			</div>
 		</div>
-    </header>
+	</header>
 
-    <!-- Contact Form -->
-    <div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-md-10 mx-auto">
-				<p>Si vous désirez m'envoyer un message, remplissez le formulaire ci-dessous et je vous répondrais au plus vite !</p>
-				<!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
-				<!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
-				<!-- NOTE: To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-				<form name="sentMessage" id="contactForm" novalidate>
-					<div class="control-group">
-						<div class="form-group floating-label-form-group controls">
-							<label>Nom</label>
-							<input type="text" class="form-control" placeholder="Nom" id="name" required data-validation-required-message="Entrez votre nom.">
-							<p class="help-block text-danger"></p>
-						</div>
-					</div>
-					<div class="control-group">
-						<div class="form-group floating-label-form-group controls">
-							<label>Email</label>
-							<input type="email" class="form-control" placeholder="Email" id="email" required data-validation-required-message="Entrez votre adresse email.">
-							<p class="help-block text-danger"></p>
-						</div>
-					</div>
-					<div class="control-group">
-						<div class="form-group floating-label-form-group controls">
-							<label>Message</label>
-							<textarea rows="5" class="form-control" placeholder="Votre Message" id="message" required data-validation-required-message="Entrez un message."></textarea>
-							<p class="help-block text-danger"></p>
-						</div>
-					</div>
-					<br>
-					<div id="success"></div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-secondary" id="sendMessageButton">Envoyer</button>
-					</div>
-				</form>
-			</div>
-		</div>
-    </div>
+	<!-- Content -->
+	<div class="container">
+		<?= $content ?>
+	</div>
 
-    <hr>
+	<hr>
 
     <!-- Footer -->
     <footer>
