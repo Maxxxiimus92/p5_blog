@@ -12,11 +12,13 @@ If you want to see the code on GitHub, go here : [https://www.github.com/Maxxxii
 Pour utiliser ce blog, il faut suivre les étapes suivantes :
 * Créer une base de données et importer le fichier projet_blog.sql situé dans le dossier db
 * Entrez vos identifiants de connexion à la base de données dans le fichier database.php situé dans le dossier admin
+* Pour le formulaire de Contact, entrez votre email dans le fichier mail/contact_me.php
 * Amusez-vous en utilisant ce blog !
 
 To use this blog, you must follow this steps :
 * Create a database and import the projet_blog.sql file located in the db folder
 * Enter your connexion settings in the file database.php located in the admin folder
+* To use the Contact Form, enter your email in the file mail/contact_me.php
 * Have fun using this blog !
 
 
