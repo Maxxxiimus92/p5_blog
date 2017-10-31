@@ -10,8 +10,8 @@
 <?php foreach ($articles as $article): ?>
     <div class='row'>
         <div class='col-lg-10 col-md-10 mx-auto'>
-            <a href="index.php?p=article&id=<?= $article['id']; ?>"><h2><?= $article['title']; ?></h2></a>
-            <p><?= nl2br($article['chapo']); ?></p>
+            <a href="index.php?p=article&id=<?= $article['id']; ?>"><h2><?= $this->clean($article['title']); ?></h2></a>
+            <p><?= nl2br($this->clean($article['chapo'])); ?></p>
             <p><em>Créé le <?= $article['created']; ?>. Modifié le <?= $article['updated']; ?></em></p>
         </div>
     </div>

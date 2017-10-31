@@ -33,10 +33,10 @@ class ArticleController
         if (!empty($_POST))
         {
             $result = $this->article->addArticle([
-                'author' => htmlspecialchars($_POST['author']),
-				'title' => htmlspecialchars($_POST['title']),
-				'chapo' => htmlspecialchars($_POST['chapo']),
-                'content' => htmlspecialchars($_POST['content'])
+                'author' => $_POST['author'],
+				'title' => $_POST['title'],
+				'chapo' => $_POST['chapo'],
+                'content' => $_POST['content']
             ]);
             if($result)
             {
@@ -54,10 +54,10 @@ class ArticleController
 		if (!empty($_POST))
         {
             $result = $this->article->editArticle([
-                'author' => htmlspecialchars($_POST['author']),
-				'title' => htmlspecialchars($_POST['title']),
-				'chapo' => htmlspecialchars($_POST['chapo']),
-                'content' => htmlspecialchars($_POST['content'])
+                'author' => $_POST['author'],
+				'title' => $_POST['title'],
+				'chapo' => $_POST['chapo'],
+                'content' => $_POST['content']
             ]);
             if($result)
             {

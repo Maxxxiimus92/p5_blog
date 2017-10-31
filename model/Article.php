@@ -2,7 +2,8 @@
 
 require_once 'model/Model.php';
 
-class Article extends Model {
+class Article extends Model
+{
 
     public function getArticles()
     {

@@ -55,4 +55,9 @@ class View {
             throw new Exception("Fichier '$file' introuvable");
         }
     }
+
+	private function clean($data)
+	{
+		return htmlspecialchars($data, ENT_QUOTES, 'UTF-8', false);
+	}
 }
