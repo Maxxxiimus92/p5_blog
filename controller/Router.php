@@ -93,15 +93,15 @@ class Router
         $view->generate(array('msgError' => $msgError));
     }
 
-	public function getParam($tableau, $nom)
+	public function getParam($tableau, $name)
 	{
-		if(isset($tableau[$nom]))
+		if(isset($tableau[$name]))
 		{
-			return $tableau[$nom];
+			return $tableau[$name];
 		}
 		else
 		{
-			throw new Exception("Paramètre '$nom' absent.");
+			throw new Exception("Paramètre '$name' absent.");
 		}
 	}
 

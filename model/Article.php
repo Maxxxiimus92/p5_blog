@@ -7,7 +7,7 @@ class Article extends Model
 
     public function getArticles()
     {
-        $sql = 'SELECT id, title, chapo, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article ORDER BY updated DESC, id DESC';
+        $sql = 'SELECT id, title, chapo, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article ORDER BY updated_at DESC, id DESC';
         $articles = $this->executeRequest($sql);
         return $articles;
     }
