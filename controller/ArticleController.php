@@ -11,7 +11,7 @@ class ArticleController
     {
         $this->article = new Article();
     }
-
+	
 	// Afficher tous les articles
 	public function listArticles()
     {
@@ -27,7 +27,7 @@ class ArticleController
         $view = new View("Article");
         $view->generate(array('article' => $article));
     }
-
+	
 	// Ajouter un article
 	public function add(){
         if (!empty($_POST))
@@ -46,7 +46,7 @@ class ArticleController
         $view = new View("Add");
 		$view->generate(array());
     }
-
+	
 	// Modifier un article
 	public function edit()
 	{
@@ -67,7 +67,7 @@ class ArticleController
         $view = new View("Edit");
         $view->generate(array('article' => $article));
 	}
-
+	
 	// Supprimer un article
 	public function delete()
 	{
@@ -83,5 +83,5 @@ class ArticleController
         $view = new View("Delete");
         $view->generate(array());
 	}
-
+	
 }

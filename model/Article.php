@@ -4,7 +4,7 @@ require_once 'model/Model.php';
 
 class Article extends Model
 {
-
+    
     public function getArticles()
     {
         $sql = 'SELECT id, title, chapo, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article ORDER BY updated_at DESC, id DESC';
@@ -25,7 +25,7 @@ class Article extends Model
             throw new Exception("Aucun article ne correspond à l'identifiant '$id'");
         }
     }
-
+	
 	public function addArticle($fields)
     {
         $sql_parts = [];
@@ -38,7 +38,7 @@ class Article extends Model
         $sql_part = implode(', ', $sql_parts);
         return $this->executeRequest("INSERT INTO article SET $sql_part, created_at = NOW(), updated_at = NOW()", $attributes);
     }
-
+	
 	public function editArticle($fields)
     {
         if(!empty($_POST['id']))
@@ -55,13 +55,13 @@ class Article extends Model
             return $this->executeRequest("UPDATE article SET $sql_part, updated_at = NOW() WHERE id = $id", $attributes);
         }
     }
-
+	
     public function deleteArticle($id)
     {
 		if(!empty($_POST['id']))
         {
-            return $this->executeRequest("DELETE FROM article WHERE id = ?", [$id]);
+            return $this->executeRequest("DELETE FROM article WHERE id = ?", [$id]);  
         }
     }
-
+	
 }

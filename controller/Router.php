@@ -78,7 +78,7 @@ class Router
             $this->error($e->getMessage());
         }
     }
-
+    
     // Affiche page d'accueil
     private function home()
     {
@@ -92,7 +92,7 @@ class Router
         $view = new View("Error");
         $view->generate(array('msgError' => $msgError));
     }
-
+	
 	public function getParam($tableau, $name)
 	{
 		if(isset($tableau[$name]))
@@ -104,5 +104,5 @@ class Router
 			throw new Exception("Paramètre '$name' absent.");
 		}
 	}
-
+	
 }

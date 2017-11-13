@@ -3,7 +3,7 @@
 class Configuration
 {
     private static $parameters;
-
+    
     // Renvoie la valeur d'un paramètre de configuration
     public static function get($name, $standardValue = null)
     {

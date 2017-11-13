@@ -4,7 +4,7 @@ class View {
 
     // Nom du fichier associé à la vue
     private $file;
-
+    
     // Titre de la vue (défini dans le fichier view)
     private $title;
     private $header;
@@ -55,7 +55,7 @@ class View {
             throw new Exception("Fichier '$file' introuvable");
         }
     }
-
+	
 	private function clean($data)
 	{
 		return htmlspecialchars($data, ENT_QUOTES, 'UTF-8', false);

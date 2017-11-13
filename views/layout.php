@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Projet Blog pour OpenClassrooms - Parcours développeur d'application - PHP / Symfony">
-	<meta name="author" content="">
+	<meta name="author" content="Ulrich Huet">
 
 	<title><?= $title ?></title>
 
@@ -45,7 +45,7 @@
 			</div>
 		</div>
     </nav>
-
+    
     <!-- Page Header -->
 	<header class="masthead" style="background-image: url('img/computer.jpg')">
 		<div class="container">
@@ -61,14 +61,14 @@
 			</div>
 		</div>
 	</header>
-
+	
 	<!-- Content -->
 	<div class="container">
 		<?= $content ?>
 	</div>
-
+	
 	<hr>
-
+	
     <!-- Footer -->
     <footer>
 		<div class="container">
