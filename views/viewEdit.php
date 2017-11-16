@@ -7,7 +7,7 @@
 <!-- Update Page -->
 <div class="row">
 	<div class="col-lg-10 col-md-10 mx-auto">
-		<form class="form" role="form" action="index.php?p=edit&id=<?= $_GET['id']; ?>" method="post">
+		<form class="form" role="form" action="index.php?p=edit&id=<?= $article->getId(); ?>" method="post">
 			<div class="form-group">
 				<label for="author">Auteur :</label>
 				<input type="text" class="form-control" id="author" name="author" placeholder="Auteur" value="<?= $article->getAuthor(); ?>" required>
@@ -26,9 +26,9 @@
 			</div>
 			<br>
 			<div class="form-actions">
-			    <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>">
+			    <input type="hidden" id="id" name="id" value="<?= $article->getId(); ?>">
 				<button type="submit" name="edit" class="btn btn-success">Modifier</button>
-                <a class="btn btn-primary" href="index.php?p=list">Retour</a>
+                <a class="btn btn-primary" href="index.php?p=article&id=<?= $article->getId(); ?>">Retour</a>
 			</div>
 		</form>
 	</div>

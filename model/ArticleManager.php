@@ -24,7 +24,7 @@ class ArticleManager
     public function getArticles()
     {
 		$articles = [];
-		$request = $this->getDb()->query('SELECT id, title, chapo, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article ORDER BY updated DESC, id DESC');
+		$request = $this->getDb()->query('SELECT id, title, chapo, DATE_FORMAT(created_at, "%d/%m/%Y à %Hh%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %Hh%i") AS updated FROM article ORDER BY updated DESC, id DESC');
 		while ($datas = $request->fetch(PDO::FETCH_ASSOC))
 		{
 			$articles[] = new Article($datas);
@@ -37,7 +37,7 @@ class ArticleManager
     {
         if ($this->exist($id))
 		{
-			$request = $this->getDb()->prepare('SELECT id, title, author, chapo, content, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article WHERE id = ?');
+			$request = $this->getDb()->prepare('SELECT id, title, author, chapo, content, DATE_FORMAT(created_at, "%d/%m/%Y à %Hh%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %Hh%i") AS updated FROM article WHERE id = ?');
 			$request->execute(array($id));
 			$article = new Article($request->fetch(PDO::FETCH_ASSOC));
 			return $article;

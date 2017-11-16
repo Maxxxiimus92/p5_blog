@@ -76,16 +76,17 @@ class ArticleController
     // Supprimer un article
     public function delete($id)
     {
+        $article = $this->manager->getArticle($id);
         if (!empty($id))
         {
             $result = $this->manager->deleteArticle($id);
             if($result)
             {
-                return $this->listArticles();
+                header('Location: index.php?p=list');
             }
         }
         $view = new View("Delete");
-        $view->generate(array());
+        $view->generate(array('article' => $article));
     }
     
 }
