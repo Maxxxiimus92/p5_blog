@@ -10,19 +10,19 @@
 		<form class="form" role="form" action="index.php?p=edit&id=<?= $_GET['id']; ?>" method="post">
 			<div class="form-group">
 				<label for="author">Auteur :</label>
-				<input type="text" class="form-control" id="author" name="author" placeholder="Auteur" value="<?= $article['author']; ?>" required>
+				<input type="text" class="form-control" id="author" name="author" placeholder="Auteur" value="<?= $article->getAuthor(); ?>" required>
 			</div>
 			<div class="form-group">
 				<label for="title">Titre :</label>
-				<input type="text" class="form-control" id="title" name="title" placeholder="Titre" value="<?= $article['title']; ?>" required>
+				<input type="text" class="form-control" id="title" name="title" placeholder="Titre" value="<?= $article->getTitle(); ?>" required>
 			</div>
 			<div class="form-group">
 				<label for="chapo">Chapô :</label>
-				<textarea type="text" class="form-control" id="chapo" name="chapo" placeholder="Chapô de l'article" rows="8" required><?= $article['chapo']; ?></textarea>
+				<textarea type="text" class="form-control" id="chapo" name="chapo" placeholder="Chapô de l'article" rows="8" required><?= $article->getChapo(); ?></textarea>
 			</div>
 			<div class="form-group">
 				<label for="content">Contenu :</label>
-				<textarea type="text" class="form-control" id="content" name="content" placeholder="Contenu de l'article" rows="25" required><?= $article['content']; ?></textarea>
+				<textarea type="text" class="form-control" id="content" name="content" placeholder="Contenu de l'article" rows="25" required><?= $article->getContent(); ?></textarea>
 			</div>
 			<br>
 			<div class="form-actions">

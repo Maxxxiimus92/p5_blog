@@ -1,67 +1,108 @@
 <?php
 
-require_once 'model/Model.php';
+require_once 'model/ArticleManager.php';
 
-class Article extends Model
+class Article
 {
     
-    public function getArticles()
+    private $id;
+    private $title;
+    private $chapo;
+    private $content;
+    private $author;
+    private $created;
+    private $updated;
+    
+    public function __construct($datas = [])
     {
-        $sql = 'SELECT id, title, chapo, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article ORDER BY updated_at DESC, id DESC';
-        $articles = $this->executeRequest($sql);
-        return $articles;
+        if (!empty($datas))
+        {
+            $this->hydrate($datas);
+        }
+    }
+    
+    public function hydrate($datas)
+    {
+        foreach ($datas as $key => $value)
+        {
+            $method = 'set'.ucfirst($key);
+
+            if (is_callable([$this, $method]))
+            {
+                $this->$method($value);
+            }
+        }
+    }
+    
+    // Getters and Setters
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+    
+    public function getTitle()
+    {
+        return $this->title;
+    }
+    
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+    
+    public function getChapo()
+    {
+        return $this->chapo;
+    }
+    
+    public function setChapo($chapo)
+    {
+        $this->chapo = $chapo;
+    }
+    
+    public function getContent()
+    {
+        return $this->content;
+    }
+    
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
+    
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+    
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+    
+    public function getCreated()
+    {
+        return $this->created;
+    }
+    
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+    
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+    
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
     }
 
-    public function getArticle($id)
-    {
-        $sql = 'SELECT id, title, author, chapo, content, DATE_FORMAT(created_at, "%d/%m/%Y à %H:%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %H:%i") AS updated FROM article WHERE id = ?';
-        $article = $this->executeRequest($sql, array($id));
-        if($article->rowCount() == 1)
-        {
-            return $article->fetch();  // Accès à la première ligne de résultat
-        }
-        else
-        {
-            throw new Exception("Aucun article ne correspond à l'identifiant '$id'");
-        }
-    }
-	
-	public function addArticle($fields)
-    {
-        $sql_parts = [];
-        $attributes = [];
-        foreach($fields as $k => $v)
-        {
-            $sql_parts[] = "$k = ?";
-            $attributes[] = $v;
-        }
-        $sql_part = implode(', ', $sql_parts);
-        return $this->executeRequest("INSERT INTO article SET $sql_part, created_at = NOW(), updated_at = NOW()", $attributes);
-    }
-	
-	public function editArticle($fields)
-    {
-        if(!empty($_POST['id']))
-        {
-            $id = $_POST['id'];
-            $sql_parts = [];
-            $attributes = [];
-            foreach($fields as $k => $v)
-            {
-                $sql_parts[] = "$k = ?";
-                $attributes[] = $v;
-            }
-            $sql_part = implode(', ', $sql_parts);
-            return $this->executeRequest("UPDATE article SET $sql_part, updated_at = NOW() WHERE id = $id", $attributes);
-        }
-    }
-	
-    public function deleteArticle($id)
-    {
-		if(!empty($_POST['id']))
-        {
-            return $this->executeRequest("DELETE FROM article WHERE id = ?", [$id]);  
-        }
-    }
-	
 }
