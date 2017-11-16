@@ -40,7 +40,7 @@ class ArticleController
             $datas['content'] = $_POST['content'];
             
             $article = new Article($datas);
-            $result = $this->manager->addArticle($datas);
+            $result = $this->manager->addArticle($article);
             if($result)
             {
                 header('Location: index.php?p=list');
@@ -63,7 +63,7 @@ class ArticleController
             $datas['content'] = $_POST['content'];
             
             $article = new Article($datas);
-            $result = $this->manager->editArticle($datas);
+            $result = $this->manager->editArticle($article);
             if($result)
             {
                 header('Location: index.php?p=article&id=' . $datas['id']);

@@ -48,28 +48,28 @@ class ArticleManager
 		}
     }
 	
-	public function addArticle($datas = [])
+	public function addArticle($article)
     {
         $stmt = $this->getDb()->prepare('INSERT INTO article (title, chapo, content, author, created_at, updated_at) VALUES (:title, :chapo, :content, :author, NOW(), NOW())');
-		$stmt->bindValue(':title', $datas['title']);
-		$stmt->bindValue(':chapo', $datas['chapo']);
-		$stmt->bindValue(':content', $datas['content']);
-		$stmt->bindValue(':author', $datas['author']);
+		$stmt->bindValue(':title', $article->getTitle());
+		$stmt->bindValue(':chapo', $article->getChapo());
+		$stmt->bindValue(':content', $article->getContent());
+		$stmt->bindValue(':author', $article->getAuthor());
 		$stmt->execute();
 		$stmt->closeCursor();
 		return $stmt;
     }
 	
-	public function editArticle($datas = [])
+	public function editArticle($article)
     {
         if(!empty($_POST['id']))
         {
             $stmt = $this->getDb()->prepare('UPDATE article SET title= :title, chapo= :chapo, content= :content, author= :author, updated_at= NOW() WHERE id = :id');
-			$stmt->bindValue(':id', $datas['id']);
-			$stmt->bindValue(':title', $datas['title']);
-			$stmt->bindValue(':chapo', $datas['chapo']);
-			$stmt->bindValue(':content', $datas['content']);
-			$stmt->bindValue(':author', $datas['author']);
+			$stmt->bindValue(':id', $article->getId());
+			$stmt->bindValue(':title', $article->getTitle());
+			$stmt->bindValue(':chapo', $article->getChapo());
+			$stmt->bindValue(':content', $article->getContent());
+			$stmt->bindValue(':author', $article->getAuthor());
 			$stmt->execute();
 			$stmt->closeCursor();
 			return $stmt;
