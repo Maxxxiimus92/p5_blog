@@ -93,11 +93,11 @@ class Router
         $view->generate(array('msgError' => $msgError));
     }
 	
-	public function getParam($tableau, $name)
+	public function getParam($array, $name)
 	{
-		if(isset($tableau[$name]))
+		if(isset($array[$name]))
 		{
-			return $tableau[$name];
+			return $array[$name];
 		}
 		else
 		{

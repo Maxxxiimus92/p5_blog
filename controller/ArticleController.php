@@ -1,6 +1,5 @@
 <?php
 
-require_once 'model/Article.php';
 require_once 'model/ArticleManager.php';
 require_once 'views/View.php';
 
@@ -32,19 +31,10 @@ class ArticleController
     // Ajouter un article
     public function add()
     {
-        if (!empty($_POST))
+        $result = $this->manager->addArticle();
+        if($result)
         {
-            $datas['author'] = $_POST['author'];
-            $datas['title'] = $_POST['title'];
-            $datas['chapo'] = $_POST['chapo'];
-            $datas['content'] = $_POST['content'];
-            
-            $article = new Article($datas);
-            $result = $this->manager->addArticle($article);
-            if($result)
-            {
-                header('Location: index.php?p=list');
-            }
+            header('Location: index.php?p=list');
         }
         $view = new View("Add");
         $view->generate(array());
@@ -54,20 +44,10 @@ class ArticleController
     public function edit($id)
     {
         $article = $this->manager->getArticle($id);
-        if (!empty($_POST))
+        $result = $this->manager->editArticle();
+        if($result)
         {
-            $datas['id'] = $_POST['id'];
-            $datas['author'] = $_POST['author'];
-            $datas['title'] = $_POST['title'];
-            $datas['chapo'] = $_POST['chapo'];
-            $datas['content'] = $_POST['content'];
-            
-            $article = new Article($datas);
-            $result = $this->manager->editArticle($article);
-            if($result)
-            {
-                header('Location: index.php?p=article&id=' . $datas['id']);
-            }
+            header('Location: index.php?p=article&id=' . $article->getId());
         }
         $view = new View("Edit");
         $view->generate(array('article' => $article));
@@ -77,13 +57,10 @@ class ArticleController
     public function delete($id)
     {
         $article = $this->manager->getArticle($id);
-        if (!empty($id))
+        $result = $this->manager->deleteArticle();
+        if($result)
         {
-            $result = $this->manager->deleteArticle($id);
-            if($result)
-            {
-                header('Location: index.php?p=list');
-            }
+            header('Location: index.php?p=list');
         }
         $view = new View("Delete");
         $view->generate(array('article' => $article));
