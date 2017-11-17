@@ -4,10 +4,10 @@
 J'ai utilisé le thème Clean Blog disponible sur le site startbootstrap.com pour réaliser la partie front de ce blog
 Si vous voulez voir le code sur GitHub, cliquez sur le lien : [https://www.github.com/Maxxxiimus92/p5_blog](https://www.github.com/Maxxxiimus92/p5_blog)
 
-I used the theme Clean Blog made by the website startbootstrap.com
+I used the theme Clean Blog available on the website startbootstrap.com
 If you want to see the code on GitHub, go here : [https://www.github.com/Maxxxiimus92/p5_blog](https://www.github.com/Maxxxiimus92/p5_blog)
 
-## Installation
+## Installation / Install
 
 Pour utiliser ce blog, il faut suivre les étapes suivantes :
 * Créer une base de données et importer le fichier projet_blog.sql situé dans le dossier db
