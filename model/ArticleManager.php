@@ -48,64 +48,38 @@ class ArticleManager
         }
     }
     
-    public function addArticle()
+    public function addArticle($article)
     {
-        if (!empty($_POST))
-        {
-            $datas['author'] = $_POST['author'];
-            $datas['title'] = $_POST['title'];
-            $datas['chapo'] = $_POST['chapo'];
-            $datas['content'] = $_POST['content'];
-            
-            $article = new Article($datas);
-            
-            $stmt = $this->getDb()->prepare('INSERT INTO article (title, chapo, content, author, created_at, updated_at) VALUES (:title, :chapo, :content, :author, NOW(), NOW())');
-            $stmt->bindValue(':title', $article->getTitle());
-            $stmt->bindValue(':chapo', $article->getChapo());
-            $stmt->bindValue(':content', $article->getContent());
-            $stmt->bindValue(':author', $article->getAuthor());
-            $stmt->execute();
-            $stmt->closeCursor();
-            return $stmt;
-        }
-        
+        $stmt = $this->getDb()->prepare('INSERT INTO article (title, chapo, content, author, created_at, updated_at) VALUES (:title, :chapo, :content, :author, NOW(), NOW())');
+        $stmt->bindValue(':title', $article->getTitle());
+        $stmt->bindValue(':chapo', $article->getChapo());
+        $stmt->bindValue(':content', $article->getContent());
+        $stmt->bindValue(':author', $article->getAuthor());
+        $stmt->execute();
+        $stmt->closeCursor();
+        return $stmt;
     }
     
-    public function editArticle()
+    public function editArticle($article)
     {
-        if (!empty($_POST))
-        {
-            $datas['id'] = $_POST['id'];
-            $datas['author'] = $_POST['author'];
-            $datas['title'] = $_POST['title'];
-            $datas['chapo'] = $_POST['chapo'];
-            $datas['content'] = $_POST['content'];
-            
-            $article = new Article($datas);
-
-            $stmt = $this->getDb()->prepare('UPDATE article SET title= :title, chapo= :chapo, content= :content, author= :author, updated_at= NOW() WHERE id = :id');
-            $stmt->bindValue(':id', $article->getId());
-            $stmt->bindValue(':title', $article->getTitle());
-            $stmt->bindValue(':chapo', $article->getChapo());
-            $stmt->bindValue(':content', $article->getContent());
-            $stmt->bindValue(':author', $article->getAuthor());
-            $stmt->execute();
-            $stmt->closeCursor();
-            return $stmt;
-        }
+        $stmt = $this->getDb()->prepare('UPDATE article SET title= :title, chapo= :chapo, content= :content, author= :author, updated_at= NOW() WHERE id = :id');
+        $stmt->bindValue(':id', $article->getId());
+        $stmt->bindValue(':title', $article->getTitle());
+        $stmt->bindValue(':chapo', $article->getChapo());
+        $stmt->bindValue(':content', $article->getContent());
+        $stmt->bindValue(':author', $article->getAuthor());
+        $stmt->execute();
+        $stmt->closeCursor();
+        return $stmt;
     }
     
-    public function deleteArticle()
+    public function deleteArticle($id)
     {
-        if(!empty($_POST['id']))
-        {
-            $id = $_POST['id'];
-            $stmt = $this->getDb()->prepare('DELETE FROM article WHERE id= :id');
-            $stmt->bindValue(':id', $id);
-            $stmt->execute();
-            $stmt->closeCursor();
-            return true;
-        }
+        $stmt = $this->getDb()->prepare('DELETE FROM article WHERE id= :id');
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        $stmt->closeCursor();
+        return true;
     }
     
     public function exist($id)

@@ -1,6 +1,6 @@
 <?php $this->title = 'Projet Blog - Supprimer'; ?>
 
-<?php $this->header = '<h3>Voulez-vous vraiment supprimer cet article ?</h3>'; ?>
+<?php $this->header = '<h2>Voulez-vous vraiment supprimer cet article ?</h2>'; ?>
 
 <?php $this->subheader = '<span class="subheading">Pas de retour en arrière possible !</span>'; ?>
 
