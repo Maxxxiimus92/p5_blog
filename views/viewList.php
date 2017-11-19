@@ -12,7 +12,7 @@
         <div class='col-lg-12 col-md-12 mx-auto'>
             <a href="index.php?p=article&id=<?= $article->getId(); ?>"><h2><?= $this->clean($article->getTitle()); ?></h2></a>
             <p><?= nl2br($this->clean($article->getChapo())); ?></p>
-            <p><em>Créé le <?= $article->getCreated(); ?>. Modifié le <?= $article->getUpdated(); ?></em></p>
+            <p><em>Créé le <?= $article->getCreated(); ?>. Modifié le <?= $article->getUpdated(); ?>.</em></p>
         </div>
     </div>
     <hr>
