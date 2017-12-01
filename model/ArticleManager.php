@@ -24,7 +24,7 @@ class ArticleManager
     public function getArticles()
     {
         $articles = [];
-        $request = $this->getDb()->query('SELECT id, title, chapo, DATE_FORMAT(created_at, "%d/%m/%Y à %Hh%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %Hh%i") AS updated FROM article ORDER BY updated DESC, id DESC');
+        $request = $this->getDb()->query('SELECT id, title, chapo, DATE_FORMAT(created_at, "%d/%m/%Y à %Hh%i") AS created, DATE_FORMAT(updated_at, "%d/%m/%Y à %Hh%i") AS updated FROM article ORDER BY updated_at DESC, id DESC');
         while ($datas = $request->fetch(PDO::FETCH_ASSOC))
         {
             $articles[] = new Article($datas);

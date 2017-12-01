@@ -1,6 +1,8 @@
 # Projet 5 OpenClassrooms - Créez votre premier blog en PHP 
 ## Parcours Développeur d'application - PHP / Symfony
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/d29413b8-767c-4f21-ae6b-6a627d402643/mini.png)](https://insight.sensiolabs.com/projects/d29413b8-767c-4f21-ae6b-6a627d402643)
+
 J'ai utilisé le thème Clean Blog disponible sur le site startbootstrap.com pour réaliser la partie front de ce blog
 Si vous voulez voir le code sur GitHub, cliquez sur le lien : [https://www.github.com/Maxxxiimus92/p5_blog](https://www.github.com/Maxxxiimus92/p5_blog)
 
